@@ -1,0 +1,13 @@
+[build]
+apt_pkgs = ["libreoffice", "libreoffice-core", "libreoffice-writer", "libreoffice-calc", "libreoffice-common"]
+
+[phases.setup]
+nixpkgs = ["bash"]
+
+[phases.install]
+cmds = [
+  "pip install --no-cache-dir -r requirements.txt"
+]
+
+[phases.start]
+cmd = "./start.sh"
