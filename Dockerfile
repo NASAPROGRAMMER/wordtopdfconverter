@@ -17,3 +17,5 @@ COPY . .
 RUN mkdir -p /app/uploads /app/converted
 
 EXPOSE 5000
+
+CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:$PORT"]
