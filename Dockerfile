@@ -16,5 +16,6 @@ RUN mkdir -p /app/uploads /app/converted
 
 EXPOSE 5000
 
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]  
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]
+
 
