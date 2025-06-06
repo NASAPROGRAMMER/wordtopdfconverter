@@ -16,4 +16,4 @@ RUN mkdir -p /app/uploads /app/converted
 
 EXPOSE 5000
 
-CMD ["/bin/bash", "-c", "gunicorn run:app –bind 0.0.0.0:$PORT"]
+CMD ["/bin/bash", "-c", "gunicorn run:app –bind 0.0.0.0:5000"]
