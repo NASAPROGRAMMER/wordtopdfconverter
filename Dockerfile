@@ -1,29 +1,26 @@
-# --- STEP 1: Pakai base image Python slim
 FROM python:3.10-slim
 
-# --- STEP 2: Install dependensi sistem (termasuk LibreOffice)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-      libreoffice-core \
-      libreoffice-writer \
-      libreoffice-calc \
-      libreoffice-common && \
-    rm -rf /var/lib/apt/lists/*
+# Install system dependencies (termasuk libreoffice dan deps-nya)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libreoffice \
+    fonts-dejavu \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# --- STEP 3: Set working directory
+# Set working directory
 WORKDIR /app
 
-# --- STEP 4: Copy requirements dan install Python packages
+# Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# --- STEP 5: Copy semua source code
+# Copy all app files
 COPY . .
 
-# --- STEP 6: Buat folder uploads dan converted
+# Buat folder runtime
 RUN mkdir -p /app/uploads /app/converted
 
-# --- STEP 7: Expose port dan jalankan aplikasi dengan gunicorn
-ENV PORT=5000
+# Expose port (optional, Railway auto-detect juga)
 EXPOSE 5000
+
+# Start pakai gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
