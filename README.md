@@ -26,7 +26,7 @@ Berikut adalah tampilan halaman utama dari aplikasi ini:
 ---
 
 ## 📁 Struktur Proyek
-
+```
 .
 ├── app.py ← Aplikasi Flask utama
 ├── pdf.png ← Gambar tampilan halaman
@@ -35,7 +35,7 @@ Berikut adalah tampilan halaman utama dari aplikasi ini:
 ├── Dockerfile ← (opsional) untuk Docker
 ├── railway.toml ← (opsional) untuk Railway
 └── README.md ← Dokumentasi proyek
-
+```
 
 ---
 
